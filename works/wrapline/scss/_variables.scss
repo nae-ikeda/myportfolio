@@ -1,0 +1,37 @@
+// ==============================
+// Variables
+// ==============================
+
+// Colors
+$color-ink: #11161c;
+$color-ink-deep: #0a0d11;
+$color-ground: #f5f4f0;
+$color-white: #ffffff;
+$color-muted: #4a535c;
+$color-muted-on-dark: #d5dae0;
+$color-subtle-on-dark: #aeb6bf;
+$color-line: #dedcd5;
+$color-line-dark: #3a4450;
+$color-input-line: #c9c6bd;
+$color-accent: #f2b705;
+$color-error: #b42318;
+
+// Fonts
+$font-base: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+$font-en: "Barlow Condensed", $font-base;
+
+// Layout
+$container-width: 1160px;
+$container-narrow: 860px;
+$gutter: 24px;
+$header-height: 72px;
+
+// Breakpoints
+$bp-sm: 600px;
+$bp-md: 900px;
+
+// Radius
+$radius-sm: 8px;
+$radius-md: 12px;
+$radius-lg: 16px;
+$radius-pill: 999px;

@@ -1,0 +1,24 @@
+@use "variables" as *;
+
+// 指定した幅「以上」で適用（モバイルファースト）
+@mixin mq($bp) {
+  @media (min-width: $bp) {
+    @content;
+  }
+}
+
+// 指定した幅「未満」で適用
+@mixin mq-down($bp) {
+  @media (max-width: ($bp - 0.02px)) {
+    @content;
+  }
+}
+
+// 英字の見出しラベル
+@mixin en-label($size: 16px) {
+  font-family: $font-en;
+  font-weight: 700;
+  font-size: $size;
+  letter-spacing: 0.12em;
+  line-height: 1.4;
+}
