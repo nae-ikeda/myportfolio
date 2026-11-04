@@ -1,0 +1,11 @@
+// ==============================
+// naeho ikeda portfolio
+// 書き出し: npx sass scss/style.scss css/style.css --no-source-map
+// 監視:     npx sass --watch scss/style.scss css/style.css --no-source-map
+// ==============================
+@use "base";
+@use "components";
+@use "layout";
+@use "header";
+@use "sections";
+@use "motion";

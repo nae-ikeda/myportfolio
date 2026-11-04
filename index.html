@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>naeho ikeda｜Webデザイナー・コーダー ポートフォリオ</title>
+  <meta name="description" content="熊本のWebデザイナー・コーダー、池田苗穂のポートフォリオ。Webサイト・LPのデザインからコーディング、WordPress構築まで一貫して担当します。">
+  <meta property="og:title" content="naeho ikeda｜Webデザイナー・コーダー ポートフォリオ">
+  <meta property="og:description" content="Webサイト・LPのデザインからコーディング、WordPress構築まで一貫して担当します。">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <script>
+    // 動きを減らす設定でなければ、描画前に .js-anim を付けておく（ちらつき防止）
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.documentElement.classList.add('js-anim');
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ===== Header（ロゴ＋丸いナビボタン） ===== -->
+  <header class="header">
+    <a href="#top" class="header__logo">naeho<span>.</span></a>
+
+    <button class="menu-btn" type="button" aria-controls="global-nav" aria-expanded="false" aria-label="メニューを開く">
+      <span class="menu-btn__bar"></span>
+      <span class="menu-btn__bar"></span>
+    </button>
+
+    <nav class="nav" id="global-nav" aria-label="メニュー">
+      <ul class="nav__list">
+        <li><a href="#top" class="pill">home</a></li>
+        <li><a href="#works" class="pill">works</a></li>
+        <li><a href="#skills" class="pill">skills</a></li>
+        <li><a href="#profile" class="pill">profile</a></li>
+        <li><a href="#contact" class="pill pill--accent">contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="layout">
+
+    <!-- ===== 左：固定パネル（PC） / 上部ビジュアル（スマホ） ===== -->
+    <aside class="stage" aria-label="メインビジュアル">
+      <div class="stage__inner">
+        <svg class="stage__illust" viewBox="0 0 400 400" role="img" aria-label="ブラウザの画面とカーソルのイラスト">
+          <!-- 背景の丸 -->
+          <circle cx="200" cy="206" r="150" fill="#232323"/>
+          <!-- 後ろのウィンドウ -->
+          <g class="illust-float illust-float--slow">
+            <rect x="196" y="78" width="160" height="112" rx="16" fill="#1B1B1B" stroke="#FFFFFF" stroke-width="4"/>
+            <path d="M196 106h160" stroke="#FFFFFF" stroke-width="4"/>
+            <rect x="214" y="124" width="60" height="10" rx="5" fill="#FFFFFF"/>
+            <rect x="214" y="144" width="120" height="8" rx="4" fill="#5C5C5C"/>
+            <rect x="214" y="160" width="96" height="8" rx="4" fill="#5C5C5C"/>
+          </g>
+          <!-- 手前のウィンドウ -->
+          <g class="illust-float">
+            <rect x="44" y="128" width="248" height="184" rx="20" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="4"/>
+            <path d="M44 166h248" stroke="#1B1B1B" stroke-width="4"/>
+            <circle cx="70" cy="147" r="6" fill="#1B1B1B"/>
+            <circle cx="90" cy="147" r="6" fill="#1B1B1B"/>
+            <circle cx="110" cy="147" r="6" fill="#1B1B1B"/>
+            <rect x="66" y="186" width="112" height="72" rx="10" fill="#8FD3C4" stroke="#1B1B1B" stroke-width="4"/>
+            <path d="M80 244l24-26 18 18 12-12 30 20" fill="none" stroke="#1B1B1B" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+            <circle cx="150" cy="206" r="8" fill="#FFFFFF" stroke="#1B1B1B" stroke-width="4"/>
+            <rect x="192" y="190" width="80" height="12" rx="6" fill="#1B1B1B"/>
+            <rect x="192" y="212" width="72" height="8" rx="4" fill="#BDBDBD"/>
+            <rect x="192" y="228" width="60" height="8" rx="4" fill="#BDBDBD"/>
+            <rect x="192" y="248" width="54" height="22" rx="11" fill="#1B1B1B"/>
+            <rect x="66" y="276" width="206" height="8" rx="4" fill="#E2E2E2"/>
+          </g>
+          <!-- カーソル -->
+          <g class="illust-cursor">
+            <path d="M268 244l8 64 16-18 22 30 14-10-22-30 24-6z" fill="#FFFFFF" stroke="#1B1B1B" stroke-width="4" stroke-linejoin="round"/>
+          </g>
+          <!-- きらきら -->
+          <path class="illust-twinkle" d="M330 232l6 16 16 6-16 6-6 16-6-16-16-6 16-6z" fill="#8FD3C4"/>
+          <path class="illust-twinkle illust-twinkle--late" d="M70 74l4 10 10 4-10 4-4 10-4-10-10-4 10-4z" fill="#FFE27A"/>
+          <!-- 波線 -->
+          <path d="M112 66c12-14 22-14 32 0s20 14 32 0" fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round"/>
+        </svg>
+
+        <!-- 回る丸い文字 -->
+        <a href="#works" class="badge" aria-label="作品一覧へスクロール">
+          <svg class="badge__text" viewBox="0 0 120 120" aria-hidden="true">
+            <defs><path id="badge-circle" d="M60 60m-44 0a44 44 0 1 1 88 0a44 44 0 1 1-88 0"/></defs>
+            <text><textPath href="#badge-circle">scroll down ・ scroll down ・ scroll down ・</textPath></text>
+          </svg>
+          <span class="badge__arrow" aria-hidden="true">↓</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- ===== 右：スクロールするパネル ===== -->
+    <main class="panels" id="top">
+
+      <!-- Hero -->
+      <section class="panel hero" aria-labelledby="hero-title">
+        <p class="hero__role">web designer &amp; coder</p>
+        <h1 class="hero__name" id="hero-title">naeho<br>ikeda</h1>
+        <p class="hero__catch">伝わるデザインを、<br>公開まで一人で。</p>
+        <p class="hero__lead">熊本を拠点に、Webサイト・LPのデザインからコーディング、WordPressの構築までを一貫して担当しています。ご依頼の目的を確認しながら、責任を持って完成まで進めます。</p>
+        <ul class="hero__tags" aria-label="対応できること">
+          <li>design</li><li>coding</li><li>wordpress</li><li>landing page</li>
+        </ul>
+      </section>
+
+      <!-- Works -->
+      <section class="panel" id="works" aria-labelledby="works-title">
+        <div class="head">
+          <h2 class="head__en" id="works-title">works</h2>
+          <p class="head__ja">制作実績</p>
+        </div>
+        <p class="panel__lead">どの作品も、デザインから実装まで一人で担当しています。</p>
+
+        <div class="works">
+
+          <!-- 01 WRAPLINE -->
+          <article class="work" data-reveal>
+            <a href="works/wrapline/" class="work__thumb" target="_blank" rel="noopener">
+              <img src="img/works/wrapline.jpg" alt="WRAPLINE LPのファーストビュー" width="1200" height="750" loading="lazy">
+            </a>
+            <div class="work__body">
+              <div class="work__meta">
+                <span class="work__num">01</span>
+                <ul class="work__tags"><li>LP</li><li>自主制作</li></ul>
+              </div>
+              <h3 class="work__title">WRAPLINE<span>法人向け営業車ラッピングのLP</span></h3>
+              <p class="work__text">架空のカーラッピング会社の、法人向けLPです。社用車の活用を考える担当者が「任せて大丈夫そう」と感じられるよう、余白と罫線を生かした編集デザインで構成しました。配色は黒・オフホワイト・オレンジの3色にしぼり、要点だけをオレンジで強調しています。</p>
+              <details class="work__detail">
+                <summary>制作のポイントを見る</summary>
+                <ul class="points">
+                  <li>慣性スクロールと控えめなパララックス、スクロールに合わせて要素が現れる演出で、読み進める心地よさを意識しました。動きを減らす設定の環境では、演出を止めています。</li>
+                  <li>スマホでは、ヘッダーのボタンが見えない間だけ問い合わせボタンを画面下に表示し、フォームまで来たら消えるようにしました。</li>
+                  <li>「ご依頼の流れ」は、ゴールに向かう番号つきの1本線で表現しました。</li>
+                  <li>人気プランの価格を大きく、オレンジで見せて、比べやすくしています。</li>
+                </ul>
+                <dl class="spec">
+                  <div><dt>担当</dt><dd>企画・デザイン・コーディング</dd></div>
+                  <div><dt>使用技術</dt><dd>HTML／SCSS（BEM）／JavaScript／Lenis／Rellax</dd></div>
+                  <div><dt>期間</dt><dd>［約〇日］</dd></div>
+                </dl>
+              </details>
+              <a href="works/wrapline/" class="pill pill--dark" target="_blank" rel="noopener">サイトを見る<span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+
+          <!-- 02 串部硝子店 -->
+          <article class="work" data-reveal>
+            <a href="https://kushibe-glass.com" class="work__thumb" target="_blank" rel="noopener">
+              <img src="img/works/kushibe.jpg" alt="串部硝子店サイトのトップページ" width="1200" height="750" loading="lazy">
+            </a>
+            <div class="work__body">
+              <div class="work__meta">
+                <span class="work__num">02</span>
+                <ul class="work__tags"><li>コーポレートサイト</li><li>WordPress</li></ul>
+              </div>
+              <h3 class="work__title">串部硝子店<span>ガラス・サッシ工事（熊本市）</span></h3>
+              <p class="work__text">窓や建具の修理を考えている一般家庭の方が、気軽に相談できるサイトを目指しました。「施工の流れ」「よくある質問」「見積もり無料」をトップに並べ、初めての方の不安を減らす構成にしています。</p>
+              <details class="work__detail">
+                <summary>制作のポイントを見る</summary>
+                <ul class="points">
+                  <li>施工実績とお知らせは、お客さま自身で更新できるようにしました。</li>
+                  <li>電話とフォーム、どちらからでも相談しやすいよう、問い合わせ先をページの各所に置いています。</li>
+                </ul>
+                <dl class="spec">
+                  <div><dt>担当</dt><dd>デザイン・コーディング・WordPress構築</dd></div>
+                  <div><dt>使用技術</dt><dd>Figma／HTML／SCSS／JavaScript／WordPress</dd></div>
+                  <div><dt>期間</dt><dd>［約〇か月］</dd></div>
+                </dl>
+              </details>
+              <a href="https://kushibe-glass.com" class="pill pill--dark" target="_blank" rel="noopener">サイトを見る<span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+
+          <!-- 03 LiMoa -->
+          <article class="work" data-reveal>
+            <a href="https://limoa.net/" class="work__thumb" target="_blank" rel="noopener">
+              <img src="img/works/limoa.jpg" alt="LiMoaサイトのトップページ" width="1200" height="750" loading="lazy">
+            </a>
+            <div class="work__body">
+              <div class="work__meta">
+                <span class="work__num">03</span>
+                <ul class="work__tags"><li>サービスサイト</li><li>WordPress</li></ul>
+              </div>
+              <h3 class="work__title">LiMoa<span>女性向けカウンセリングサービス</span></h3>
+              <p class="work__text">悩みを抱える女性が「ここなら相談してみたい」と思えるよう、やわらかく温かい雰囲気で作りました。お客さまの声と料金を経て、予約・お問い合わせにつながる流れを意識しています。</p>
+              <details class="work__detail">
+                <summary>制作のポイントを見る</summary>
+                <ul class="points">
+                  <li>悩みの種類をアイコンで分けて、自分に当てはまる相談内容を見つけやすくしました。</li>
+                  <li>コラムや講座の募集は、お知らせとして更新できるようにしています。</li>
+                </ul>
+                <dl class="spec">
+                  <div><dt>担当</dt><dd>デザイン・コーディング・WordPress構築</dd></div>
+                  <div><dt>使用技術</dt><dd>Figma／HTML／SCSS／JavaScript／WordPress</dd></div>
+                  <div><dt>期間</dt><dd>［約〇か月］</dd></div>
+                </dl>
+              </details>
+              <a href="https://limoa.net/" class="pill pill--dark" target="_blank" rel="noopener">サイトを見る<span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+
+          <!-- 04 旭屋 -->
+          <article class="work" data-reveal>
+            <a href="https://advance-asahiya.com/" class="work__thumb" target="_blank" rel="noopener">
+              <img src="img/works/asahiya.jpg" alt="旭屋サイトのトップページ" width="1200" height="750" loading="lazy">
+            </a>
+            <div class="work__body">
+              <div class="work__meta">
+                <span class="work__num">04</span>
+                <ul class="work__tags"><li>サービスサイト</li><li>WordPress</li></ul>
+              </div>
+              <h3 class="work__title">旭屋<span>運転免許の学科試験対策講習（熊本市）</span></h3>
+              <p class="work__text">学科試験を控えた方が、講習の内容と申し込み方法をすぐに理解できるように作りました。免許の種類ごとに講習内容を整理しています。</p>
+              <details class="work__detail">
+                <summary>制作のポイントを見る</summary>
+                <ul class="points">
+                  <li>よくある質問で、試験の予約方法などの疑問に先回りして答えています。</li>
+                  <li>問い合わせフォームと、外部の予約フォームへの導線を分かりやすく配置しました。</li>
+                </ul>
+                <dl class="spec">
+                  <div><dt>担当</dt><dd>デザイン・コーディング・WordPress構築</dd></div>
+                  <div><dt>使用技術</dt><dd>Figma／HTML／SCSS／JavaScript／WordPress</dd></div>
+                  <div><dt>期間</dt><dd>［約〇か月］</dd></div>
+                </dl>
+              </details>
+              <a href="https://advance-asahiya.com/" class="pill pill--dark" target="_blank" rel="noopener">サイトを見る<span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Skills -->
+      <section class="panel" id="skills" aria-labelledby="skills-title">
+        <div class="head">
+          <h2 class="head__en" id="skills-title">skills</h2>
+          <p class="head__ja">できること</p>
+        </div>
+        <div class="skills">
+          <div class="skill" data-reveal>
+            <h3 class="skill__title">design</h3>
+            <p class="skill__text">Figmaで、Webサイト・LP・バナーをデザインします。目的とターゲットに合わせて、配色と情報を整理します。</p>
+            <ul class="chips"><li>Figma</li><li>Webデザイン</li><li>バナー</li></ul>
+          </div>
+          <div class="skill" data-reveal>
+            <h3 class="skill__title">coding</h3>
+            <p class="skill__text">レスポンシブ対応のコーディング、スクロールに合わせた動きの実装、公開前の表示確認まで行います。</p>
+            <ul class="chips"><li>HTML</li><li>CSS／SCSS</li><li>JavaScript</li><li>Git</li></ul>
+          </div>
+          <div class="skill" data-reveal>
+            <h3 class="skill__title">wordpress</h3>
+            <p class="skill__text">オリジナルテーマを制作し、お客さま自身で更新できるサイトに仕上げます。</p>
+            <ul class="chips"><li>オリジナルテーマ</li><li>カスタム投稿タイプ</li><li>Contact Form 7</li></ul>
+          </div>
+          <div class="skill" data-reveal>
+            <h3 class="skill__title">workflow</h3>
+            <p class="skill__text">チャットでの進捗報告や相談、Web会議に慣れています。在宅でも、自分で段取りを組んで進めます。</p>
+            <ul class="chips"><li>Slack</li><li>Zoom／Meet</li><li>生成AIの活用</li></ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Profile -->
+      <section class="panel profile" id="profile" aria-labelledby="profile-title">
+        <h2 class="profile__vertical" id="profile-title">profile</h2>
+        <div class="profile__body">
+          <p class="profile__name">池田 苗穂<span>naeho ikeda</span></p>
+          <p class="profile__place">熊本県在住／Webデザイナー・コーダー</p>
+          <p class="profile__text">医療機関で臨床工学技士として働いたのち、2024年からWeb制作の道に進みました。就労継続支援事業所でWebデザインとWordPress構築を学び、現在は制作会社でクライアントのWebサイト制作を担当しています。医療の現場で身についた「確認を徹底する習慣」を、デザインと実装の品質に活かしています。</p>
+          <ol class="values">
+            <li data-reveal><span class="values__num">01</span><div><h3>目的を最初に確認する</h3><p>誰に何を伝えるページかをすり合わせてから作り始めます。</p></div></li>
+            <li data-reveal><span class="values__num">02</span><div><h3>自分で段取りを組む</h3><p>スケジュールを立て、納期を守って完成まで進めます。</p></div></li>
+            <li data-reveal><span class="values__num">03</span><div><h3>こまめに報告する</h3><p>進み具合と確認したいことを、早めにお伝えします。</p></div></li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section class="panel contact" id="contact" aria-labelledby="contact-title">
+        <div class="marquee" aria-hidden="true">
+          <div class="marquee__track">
+            <span>contact ・ contact ・ contact ・ contact ・ </span>
+            <span>contact ・ contact ・ contact ・ contact ・ </span>
+          </div>
+        </div>
+        <div class="contact__body">
+          <h2 class="contact__title" id="contact-title">お仕事のご相談は、<br>お気軽にどうぞ。</h2>
+          <p class="contact__text">LP・Webサイトのデザインやコーディング、WordPressでの構築など、まずは内容をお聞かせください。</p>
+          <dl class="contact__info">
+            <div><dt>稼働時間</dt><dd>［平日〇時間程度／土日〇時間程度］</dd></div>
+            <div><dt>連絡手段</dt><dd>メール・チャット・Web会議</dd></div>
+          </dl>
+          <!-- ↓ mailto: のあとを、公開してよいメールアドレスに書き換えてください -->
+          <a href="mailto:your-address@example.com" class="pill pill--accent pill--lg">メールで相談する<span aria-hidden="true">→</span></a>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <p class="footer__logo">naeho<span>.</span></p>
+        <small>&copy; Naeho Ikeda</small>
+      </footer>
+    </main>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

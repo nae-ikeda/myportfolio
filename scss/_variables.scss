@@ -1,0 +1,25 @@
+// ==============================
+// Variables
+// ==============================
+
+// Colors
+$color-ink: #1b1b1b;      // 背景・文字
+$color-white: #ffffff;    // パネル
+$color-soft: #f4f4f1;     // パネル内の淡い面
+$color-line: #e2e2dc;
+$color-muted: #5f5f5a;
+$color-mint: #8fd3c4;     // 差し色（黒文字と組み合わせる）
+$color-yellow: #ffe27a;
+
+// Fonts
+$font-base: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+$font-en: "Outfit", $font-base;
+
+// Layout
+$gap: 12px;          // パネル同士・画面端との隙間
+$radius-panel: 28px;
+$radius: 18px;
+
+// Breakpoints
+$bp-md: 768px;
+$bp-lg: 1000px;      // これ以上で「左固定＋右スクロール」の2画面

@@ -1,0 +1,138 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 64px;
+  padding: 10px 16px 10px 24px;
+  background: $color-ink;
+
+  @include mq($bp-lg) {
+    inset: 0 0 auto 0;
+    padding: 24px 28px 0 36px;
+    background: none;
+    pointer-events: none; // 下のパネルを触れるように（中の要素だけ有効に戻す）
+  }
+
+  &__logo {
+    @include en(800);
+    position: relative;
+    z-index: 2;
+    font-size: 26px;
+    line-height: 1;
+    color: $color-white;
+    text-decoration: none;
+    pointer-events: auto;
+
+    span {
+      color: $color-mint;
+    }
+  }
+}
+
+// ===== Menu button（スマホ・タブレット） =====
+.menu-btn {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 7px;
+  width: 48px;
+  height: 48px;
+  padding: 0 13px;
+  border: 0;
+  border-radius: 50%;
+  background: $color-white;
+  cursor: pointer;
+
+  @include mq($bp-lg) {
+    display: none;
+  }
+
+  &__bar {
+    display: block;
+    height: 2px;
+    background: $color-ink;
+    transition: transform 0.3s;
+  }
+
+  &[aria-expanded="true"] {
+    .menu-btn__bar:nth-child(1) {
+      transform: translateY(4.5px) rotate(45deg);
+    }
+    .menu-btn__bar:nth-child(2) {
+      transform: translateY(-4.5px) rotate(-45deg);
+    }
+  }
+}
+
+// ===== Navigation =====
+.nav {
+  @include mq-down($bp-lg) {
+    position: fixed;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    background: $color-ink;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.25s, visibility 0.25s;
+
+    &.is-open {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  @include mq($bp-lg) {
+    pointer-events: auto;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+
+    .pill {
+      min-width: 220px;
+      min-height: 60px;
+      font-size: 22px;
+    }
+
+    // PCは黒いカプセルにまとめ、下を流れるパネルの文字と重ならないようにする
+    @include mq($bp-lg) {
+      flex-direction: row;
+      gap: 4px;
+      padding: 5px;
+      border-radius: 999px;
+      background: $color-ink;
+
+      .pill {
+        min-width: 0;
+        min-height: 40px;
+        padding: 6px 18px;
+        border-color: $color-ink;
+        background: $color-ink;
+        color: $color-white;
+        font-size: 14px;
+
+        &:hover {
+          background: $color-white;
+          color: $color-ink;
+        }
+      }
+
+      .pill--accent {
+        background: $color-mint;
+        color: $color-ink;
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+// ==============================
+// Motion（スクロールで現れる演出）
+// ==============================
+// <head>のスクリプトが、動きを減らす設定でないときだけ <html> に .js-anim を付ける。
+// JS無効・動きを減らす設定のときは、要素は最初から表示される。
+
+.js-anim [data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.js-anim [data-reveal].is-revealed {
+  opacity: 1;
+  transform: none;
+}
+
+// 横に並ぶものは少しずつ遅らせる
+.js-anim {
+  .skills [data-reveal],
+  .values [data-reveal] {
+    @for $i from 1 through 4 {
+      &:nth-child(#{$i}) {
+        transition-delay: $i * 0.08s;
+      }
+    }
+  }
+}

@@ -1,0 +1,117 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+// ===== Pill（丸いボタン） =====
+.pill {
+  @include en(600);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 8px 22px;
+  border: 2px solid $color-ink;
+  border-radius: 999px;
+  background: $color-white;
+  color: $color-ink;
+  font-size: 15px;
+  line-height: 1.2;
+  text-decoration: none;
+  transition: background-color 0.2s, color 0.2s, transform 0.2s;
+
+  &:hover {
+    background: $color-ink;
+    color: $color-white;
+  }
+
+  &--dark {
+    background: $color-ink;
+    color: $color-white;
+
+    &:hover {
+      background: $color-mint;
+      color: $color-ink;
+    }
+  }
+
+  &--accent {
+    background: $color-mint;
+    border-color: $color-ink;
+    color: $color-ink;
+
+    &:hover {
+      background: $color-ink;
+      color: $color-white;
+    }
+  }
+
+  &--lg {
+    min-height: 60px;
+    padding: 14px 32px;
+    font-size: 17px;
+  }
+}
+
+// ===== Panel（白い角丸の面） =====
+.panel {
+  position: relative;
+  padding: 48px 24px;
+  border-radius: $radius-panel;
+  background: $color-white;
+
+  @include mq($bp-md) {
+    padding: 72px 56px;
+  }
+
+  &__lead {
+    margin-top: 16px;
+    color: $color-muted;
+  }
+}
+
+// ===== Section heading（大きな英字＋線つきの日本語） =====
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 24px;
+
+  &__en {
+    @include en(800);
+    font-size: clamp(52px, 7vw, 96px);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  &__ja {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+
+    &::before {
+      content: "";
+      width: 32px;
+      height: 1px;
+      background: currentColor;
+    }
+  }
+}
+
+// ===== Chips（小さなタグ） =====
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  li {
+    padding: 2px 12px;
+    border: 1px solid $color-ink;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.8;
+  }
+}

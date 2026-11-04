@@ -1,0 +1,900 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+body {
+  margin: 0;
+  font-family: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  font-size: 15px;
+  line-height: 1.9;
+  letter-spacing: 0.04em;
+  color: #1b1b1b;
+  background: #1b1b1b;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+p,
+ul,
+ol,
+dl,
+dd {
+  margin: 0;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid #8fd3c4;
+  outline-offset: 3px;
+}
+
+body.is-menu-open {
+  overflow: hidden;
+}
+
+.pill {
+  font-family: "Outfit", "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 8px 22px;
+  border: 2px solid #1b1b1b;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #1b1b1b;
+  font-size: 15px;
+  line-height: 1.2;
+  text-decoration: none;
+  transition: background-color 0.2s, color 0.2s, transform 0.2s;
+}
+.pill:hover {
+  background: #1b1b1b;
+  color: #ffffff;
+}
+.pill--dark {
+  background: #1b1b1b;
+  color: #ffffff;
+}
+.pill--dark:hover {
+  background: #8fd3c4;
+  color: #1b1b1b;
+}
+.pill--accent {
+  background: #8fd3c4;
+  border-color: #1b1b1b;
+  color: #1b1b1b;
+}
+.pill--accent:hover {
+  background: #1b1b1b;
+  color: #ffffff;
+}
+.pill--lg {
+  min-height: 60px;
+  padding: 14px 32px;
+  font-size: 17px;
+}
+
+.panel {
+  position: relative;
+  padding: 48px 24px;
+  border-radius: 28px;
+  background: #ffffff;
+}
+@media (min-width: 768px) {
+  .panel {
+    padding: 72px 56px;
+  }
+}
+.panel__lead {
+  margin-top: 16px;
+  color: #5f5f5a;
+}
+
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 24px;
+}
+.head__en {
+  font-family: "Outfit", "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  font-size: clamp(52px, 7vw, 96px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.head__ja {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+}
+.head__ja::before {
+  content: "";
+  width: 32px;
+  height: 1px;
+  background: currentColor;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.chips li {
+  padding: 2px 12px;
+  border: 1px solid #1b1b1b;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.8;
+}
+
+@media (min-width: 1000px) {
+  .layout {
+    display: grid;
+    grid-template-columns: minmax(0, 42fr) minmax(0, 58fr);
+  }
+}
+
+.stage {
+  position: relative;
+  height: 82svh;
+  min-height: 520px;
+  padding: 72px 12px 12px;
+}
+@media (min-width: 1000px) {
+  .stage {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    min-height: 0;
+    padding: 12px;
+  }
+}
+.stage__inner {
+  position: relative;
+  display: grid;
+  place-items: center;
+  height: 100%;
+}
+.stage__illust {
+  width: min(88%, 520px);
+}
+
+.badge {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  display: grid;
+  place-items: center;
+  width: 112px;
+  height: 112px;
+  color: #ffffff;
+  text-decoration: none;
+}
+@media (min-width: 1000px) {
+  .badge {
+    right: auto;
+    left: 28px;
+    bottom: 28px;
+    width: 128px;
+    height: 128px;
+  }
+}
+.badge__text {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  animation: spin 18s linear infinite;
+}
+.badge__text text {
+  font-family: "Outfit", "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  font-size: 11.5px;
+  letter-spacing: 0.14em;
+  fill: currentColor;
+}
+.badge__arrow {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #8fd3c4;
+  color: #1b1b1b;
+  font-size: 18px;
+  font-weight: 700;
+  transition: transform 0.2s;
+}
+.badge:hover .badge__arrow {
+  transform: translateY(3px);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.illust-float,
+.illust-cursor,
+.illust-twinkle {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.illust-float {
+  animation: float 6s ease-in-out infinite;
+}
+.illust-float--slow {
+  animation-duration: 8s;
+  animation-delay: -2s;
+}
+
+.illust-cursor {
+  animation: cursor 5s ease-in-out infinite;
+}
+
+.illust-twinkle {
+  animation: twinkle 3s ease-in-out infinite;
+}
+.illust-twinkle--late {
+  animation-delay: -1.5s;
+}
+
+@keyframes float {
+  50% {
+    transform: translateY(-8px);
+  }
+}
+@keyframes cursor {
+  50% {
+    transform: translate(-10px, -6px);
+  }
+}
+@keyframes twinkle {
+  50% {
+    transform: scale(0.6) rotate(20deg);
+    opacity: 0.6;
+  }
+}
+.panels {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0 12px 12px;
+}
+@media (min-width: 1000px) {
+  .panels {
+    padding: 12px 12px 12px 0;
+  }
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 12px 12px;
+  color: #bdbdb8;
+  font-size: 12px;
+}
+.footer__logo {
+  font-family: "Outfit", "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  font-size: 22px;
+  color: #ffffff;
+}
+.footer__logo span {
+  color: #8fd3c4;
+}
+
+.header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 64px;
+  padding: 10px 16px 10px 24px;
+  background: #1b1b1b;
+}
+@media (min-width: 1000px) {
+  .header {
+    inset: 0 0 auto 0;
+    padding: 24px 28px 0 36px;
+    background: none;
+    pointer-events: none;
+  }
+}
+.header__logo {
+  font-family: "Outfit", "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  position: relative;
+  z-index: 2;
+  font-size: 26px;
+  line-height: 1;
+  color: #ffffff;
+  text-decoration: none;
+  pointer-events: auto;
+}
+.header__logo span {
+  color: #8fd3c4;
+}
+
+.menu-btn {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 7px;
+  width: 48px;
+  height: 48px;
+  padding: 0 13px;
+  border: 0;
+  border-radius: 50%;
+  background: #ffffff;
+  cursor: pointer;
+}
+@media (min-width: 1000px) {
+  .menu-btn {
+    display: none;
+  }
+}
+.menu-btn__bar {
+  display: block;
+  height: 2px;
+  background: #1b1b1b;
+  transition: transform 0.3s;
+}
+.menu-btn[aria-expanded=true] .menu-btn__bar:nth-child(1) {
+  transform: translateY(4.5px) rotate(45deg);
+}
+.menu-btn[aria-expanded=true] .menu-btn__bar:nth-child(2) {
+  transform: translateY(-4.5px) rotate(-45deg);
+}
+
+@media (max-width: 999.98px) {
+  .nav {
+    position: fixed;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    background: #1b1b1b;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.25s, visibility 0.25s;
+  }
+  .nav.is-open {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+@media (min-width: 1000px) {
+  .nav {
+    pointer-events: auto;
+  }
+}
+.nav__list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+.nav__list .pill {
+  min-width: 220px;
+  min-height: 60px;
+  font-size: 22px;
+}
+@media (min-width: 1000px) {
+  .nav__list {
+    flex-direction: row;
+    gap: 4px;
+    padding: 5px;
+    border-radius: 999px;
+    background: #1b1b1b;
+  }
+  .nav__list .pill {
+    min-width: 0;
+    min-height: 40px;
+    padding: 6px 18px;
+    border-color: #1b1b1b;
+    background: #1b1b1b;
+    color: #ffffff;
+    font-size: 14px;
+  }
+  .nav__list .pill:hover {
+    background: #ffffff;
+    color: #1b1b1b;
+  }
+  .nav__list .pill--accent {
+    background: #8fd3c4;
+    color: #1b1b1b;
+  }
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+}
+@media (min-width: 1000px) {
+  .hero {
+    min-height: calc(100vh - 24px);
+    padding-top: 120px;
+  }
+}
+.hero__role {
+  font-family: "Outfit", "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  font-size: 15px;
+  letter-spacing: 0.14em;
+}
+.hero__name {
+  font-family: "Outfit", "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  font-size: clamp(76px, 12vw, 168px);
+  line-height: 0.88;
+  letter-spacing: -0.04em;
+}
+.hero__catch {
+  margin-top: 8px;
+  font-size: clamp(20px, 2.2vw, 28px);
+  font-weight: 700;
+  line-height: 1.8;
+  letter-spacing: 0.18em;
+}
+.hero__lead {
+  max-width: 560px;
+  color: #5f5f5a;
+}
+.hero__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.hero__tags li {
+  font-family: "Outfit", "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  padding: 6px 16px;
+  border-radius: 999px;
+  background: #f4f4f1;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.works {
+  display: flex;
+  flex-direction: column;
+  gap: 72px;
+  margin-top: 48px;
+}
+@media (min-width: 768px) {
+  .works {
+    gap: 96px;
+    margin-top: 64px;
+  }
+}
+
+.work {
+  display: grid;
+  gap: 28px;
+}
+.work__thumb {
+  display: block;
+  overflow: hidden;
+  border: 2px solid #1b1b1b;
+  border-radius: 18px;
+  background: #f4f4f1;
+  transform: rotate(-1.5deg);
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s;
+}
+.work__thumb img {
+  width: 100%;
+  aspect-ratio: 16/10;
+  object-fit: cover;
+  object-position: top;
+}
+.work__thumb:hover {
+  transform: rotate(0) translateY(-6px);
+  box-shadow: 0 12px 0 #1b1b1b;
+}
+.work:nth-child(even) .work__thumb {
+  transform: rotate(1.5deg);
+}
+.work:nth-child(even) .work__thumb:hover {
+  transform: rotate(0) translateY(-6px);
+}
+.work__body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+.work__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 16px;
+}
+.work__num {
+  font-family: "Outfit", "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  font-size: 44px;
+  line-height: 1;
+}
+.work__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.work__tags li {
+  padding: 2px 12px;
+  border-radius: 999px;
+  background: #1b1b1b;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.8;
+}
+.work__title {
+  font-size: clamp(24px, 2.6vw, 30px);
+  font-weight: 700;
+  line-height: 1.4;
+}
+.work__title span {
+  display: block;
+  margin-top: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #5f5f5a;
+}
+.work__text {
+  color: #1b1b1b;
+}
+.work__detail {
+  width: 100%;
+  border-top: 1px solid #e2e2dc;
+  border-bottom: 1px solid #e2e2dc;
+}
+.work__detail summary {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 52px;
+  padding-right: 40px;
+  font-weight: 700;
+  list-style: none;
+  cursor: pointer;
+}
+.work__detail summary::-webkit-details-marker {
+  display: none;
+}
+.work__detail summary::after {
+  content: "";
+  position: absolute;
+  right: 4px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(#1b1b1b, #1b1b1b) center/12px 2px no-repeat, linear-gradient(#1b1b1b, #1b1b1b) center/2px 12px no-repeat, #8fd3c4;
+  transition: transform 0.3s;
+}
+.work__detail[open] summary::after {
+  transform: rotate(45deg);
+}
+
+.points {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-bottom: 20px;
+}
+.points li {
+  position: relative;
+  padding-left: 20px;
+}
+.points li::before {
+  content: "";
+  position: absolute;
+  top: 0.75em;
+  left: 2px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #8fd3c4;
+}
+
+.spec {
+  display: grid;
+  gap: 6px;
+  margin-bottom: 20px;
+  padding: 16px 20px;
+  border-radius: 14px;
+  background: #f4f4f1;
+  font-size: 14px;
+}
+.spec div {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr);
+  gap: 12px;
+}
+.spec dt {
+  color: #5f5f5a;
+}
+
+.skills {
+  display: grid;
+  gap: 12px;
+  margin-top: 48px;
+}
+@media (min-width: 768px) {
+  .skills {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.skill {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 28px 24px;
+  border-radius: 20px;
+  background: #f4f4f1;
+}
+.skill__title {
+  font-family: "Outfit", "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  font-size: 28px;
+  line-height: 1.2;
+}
+.skill__text {
+  flex-grow: 1;
+  font-size: 14px;
+  color: #5f5f5a;
+}
+
+.profile {
+  display: grid;
+  gap: 32px;
+}
+@media (min-width: 768px) {
+  .profile {
+    grid-template-columns: 96px minmax(0, 1fr);
+    gap: 48px;
+  }
+}
+.profile__vertical {
+  font-family: "Outfit", "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  border-radius: 20px;
+  background: #1b1b1b;
+  color: #ffffff;
+  font-size: 56px;
+  line-height: 1;
+}
+@media (min-width: 768px) {
+  .profile__vertical {
+    writing-mode: vertical-rl;
+    padding: 32px 12px;
+    font-size: 72px;
+  }
+}
+.profile__body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.profile__name {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+.profile__name span {
+  font-family: "Outfit", "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  margin-left: 12px;
+  font-size: 15px;
+  color: #5f5f5a;
+  letter-spacing: 0.04em;
+}
+.profile__place {
+  font-size: 14px;
+  color: #5f5f5a;
+}
+
+.values {
+  display: grid;
+  gap: 12px;
+  margin-top: 16px;
+}
+.values li {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+  padding: 20px;
+  border: 2px solid #1b1b1b;
+  border-radius: 18px;
+}
+.values h3 {
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.6;
+}
+.values p {
+  font-size: 14px;
+  color: #5f5f5a;
+}
+.values__num {
+  font-family: "Outfit", "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #8fd3c4;
+  font-size: 16px;
+}
+
+.contact {
+  overflow: hidden;
+  padding-top: 0;
+  padding-inline: 0;
+}
+.contact__body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 40px 24px 0;
+}
+@media (min-width: 768px) {
+  .contact__body {
+    padding: 56px 56px 0;
+  }
+}
+.contact__title {
+  font-size: clamp(24px, 2.8vw, 34px);
+  font-weight: 700;
+  line-height: 1.7;
+  letter-spacing: 0.12em;
+}
+.contact__text {
+  color: #5f5f5a;
+}
+.contact__info {
+  display: grid;
+  gap: 6px;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+.contact__info div {
+  display: grid;
+  grid-template-columns: 80px minmax(0, 1fr);
+  gap: 12px;
+}
+.contact__info dt {
+  color: #5f5f5a;
+}
+
+.marquee {
+  overflow: hidden;
+  padding-block: 28px 20px;
+  border-bottom: 2px solid #1b1b1b;
+}
+.marquee__track {
+  display: flex;
+  width: max-content;
+  animation: marquee 24s linear infinite;
+}
+.marquee__track span {
+  font-family: "Outfit", "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  padding-right: 0.3em;
+  font-size: clamp(64px, 9vw, 132px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.js-anim [data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.js-anim [data-reveal].is-revealed {
+  opacity: 1;
+  transform: none;
+}
+
+.js-anim .skills [data-reveal]:nth-child(1),
+.js-anim .values [data-reveal]:nth-child(1) {
+  transition-delay: 0.08s;
+}
+.js-anim .skills [data-reveal]:nth-child(2),
+.js-anim .values [data-reveal]:nth-child(2) {
+  transition-delay: 0.16s;
+}
+.js-anim .skills [data-reveal]:nth-child(3),
+.js-anim .values [data-reveal]:nth-child(3) {
+  transition-delay: 0.24s;
+}
+.js-anim .skills [data-reveal]:nth-child(4),
+.js-anim .values [data-reveal]:nth-child(4) {
+  transition-delay: 0.32s;
+}

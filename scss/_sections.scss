@@ -1,0 +1,442 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+// ===== Hero =====
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+
+  @include mq($bp-lg) {
+    min-height: calc(100vh - #{$gap * 2});
+    padding-top: 120px;
+  }
+
+  &__role {
+    @include en(600);
+    font-size: 15px;
+    letter-spacing: 0.14em;
+  }
+
+  &__name {
+    @include en(800);
+    font-size: clamp(76px, 12vw, 168px);
+    line-height: 0.88;
+    letter-spacing: -0.04em;
+  }
+
+  &__catch {
+    margin-top: 8px;
+    font-size: clamp(20px, 2.2vw, 28px);
+    font-weight: 700;
+    line-height: 1.8;
+    letter-spacing: 0.18em; // walnut. のような広めの字間
+  }
+
+  &__lead {
+    max-width: 560px;
+    color: $color-muted;
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    li {
+      @include en(600);
+      padding: 6px 16px;
+      border-radius: 999px;
+      background: $color-soft;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+  }
+}
+
+// ===== Works =====
+.works {
+  display: flex;
+  flex-direction: column;
+  gap: 72px;
+  margin-top: 48px;
+
+  @include mq($bp-md) {
+    gap: 96px;
+    margin-top: 64px;
+  }
+}
+
+.work {
+  display: grid;
+  gap: 28px;
+
+  &__thumb {
+    display: block;
+    overflow: hidden;
+    border: 2px solid $color-ink;
+    border-radius: $radius;
+    background: $color-soft;
+    transform: rotate(-1.5deg);
+    transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s;
+
+    img {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      object-position: top;
+    }
+
+    &:hover {
+      transform: rotate(0) translateY(-6px);
+      box-shadow: 0 12px 0 $color-ink;
+    }
+  }
+
+  // 1つおきに傾きを逆にして、手で並べたような軽さを出す
+  &:nth-child(even) &__thumb {
+    transform: rotate(1.5deg);
+
+    &:hover {
+      transform: rotate(0) translateY(-6px);
+    }
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  &__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px 16px;
+  }
+
+  &__num {
+    @include en(800);
+    font-size: 44px;
+    line-height: 1;
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+
+    li {
+      padding: 2px 12px;
+      border-radius: 999px;
+      background: $color-ink;
+      color: $color-white;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 1.8;
+    }
+  }
+
+  &__title {
+    font-size: clamp(24px, 2.6vw, 30px);
+    font-weight: 700;
+    line-height: 1.4;
+
+    span {
+      display: block;
+      margin-top: 4px;
+      font-size: 14px;
+      font-weight: 500;
+      color: $color-muted;
+    }
+  }
+
+  &__text {
+    color: $color-ink;
+  }
+
+  // 開閉する「制作のポイント」
+  &__detail {
+    width: 100%;
+    border-top: 1px solid $color-line;
+    border-bottom: 1px solid $color-line;
+
+    summary {
+      position: relative;
+      display: flex;
+      align-items: center;
+      min-height: 52px;
+      padding-right: 40px;
+      font-weight: 700;
+      list-style: none;
+      cursor: pointer;
+
+      &::-webkit-details-marker {
+        display: none;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        right: 4px;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background:
+          linear-gradient($color-ink, $color-ink) center / 12px 2px no-repeat,
+          linear-gradient($color-ink, $color-ink) center / 2px 12px no-repeat,
+          $color-mint;
+        transition: transform 0.3s;
+      }
+    }
+
+    &[open] summary::after {
+      transform: rotate(45deg);
+    }
+  }
+}
+
+.points {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-bottom: 20px;
+
+  li {
+    position: relative;
+    padding-left: 20px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0.75em;
+      left: 2px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: $color-mint;
+    }
+  }
+}
+
+.spec {
+  display: grid;
+  gap: 6px;
+  margin-bottom: 20px;
+  padding: 16px 20px;
+  border-radius: 14px;
+  background: $color-soft;
+  font-size: 14px;
+
+  div {
+    display: grid;
+    grid-template-columns: 72px minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  dt {
+    color: $color-muted;
+  }
+}
+
+// ===== Skills =====
+.skills {
+  display: grid;
+  gap: 12px;
+  margin-top: 48px;
+
+  @include mq($bp-md) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.skill {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 28px 24px;
+  border-radius: 20px;
+  background: $color-soft;
+
+  &__title {
+    @include en(700);
+    font-size: 28px;
+    line-height: 1.2;
+  }
+
+  &__text {
+    flex-grow: 1;
+    font-size: 14px;
+    color: $color-muted;
+  }
+}
+
+// ===== Profile（縦書きの見出し＋本文） =====
+.profile {
+  display: grid;
+  gap: 32px;
+
+  @include mq($bp-md) {
+    grid-template-columns: 96px minmax(0, 1fr);
+    gap: 48px;
+  }
+
+  &__vertical {
+    @include en(800);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    border-radius: 20px;
+    background: $color-ink;
+    color: $color-white;
+    font-size: 56px;
+    line-height: 1;
+
+    @include mq($bp-md) {
+      writing-mode: vertical-rl;
+      padding: 32px 12px;
+      font-size: 72px;
+    }
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__name {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+
+    span {
+      @include en(500);
+      margin-left: 12px;
+      font-size: 15px;
+      color: $color-muted;
+      letter-spacing: 0.04em;
+    }
+  }
+
+  &__place {
+    font-size: 14px;
+    color: $color-muted;
+  }
+}
+
+.values {
+  display: grid;
+  gap: 12px;
+  margin-top: 16px;
+
+  li {
+    display: grid;
+    grid-template-columns: 52px minmax(0, 1fr);
+    gap: 12px;
+    align-items: start;
+    padding: 20px;
+    border: 2px solid $color-ink;
+    border-radius: 18px;
+  }
+
+  h3 {
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.6;
+  }
+
+  p {
+    font-size: 14px;
+    color: $color-muted;
+  }
+
+  &__num {
+    @include en(800);
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: $color-mint;
+    font-size: 16px;
+  }
+}
+
+// ===== Contact =====
+.contact {
+  overflow: hidden;
+  padding-top: 0;
+  padding-inline: 0;
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 40px 24px 0;
+
+    @include mq($bp-md) {
+      padding: 56px 56px 0;
+    }
+  }
+
+  &__title {
+    font-size: clamp(24px, 2.8vw, 34px);
+    font-weight: 700;
+    line-height: 1.7;
+    letter-spacing: 0.12em;
+  }
+
+  &__text {
+    color: $color-muted;
+  }
+
+  &__info {
+    display: grid;
+    gap: 6px;
+    margin-bottom: 8px;
+    font-size: 14px;
+
+    div {
+      display: grid;
+      grid-template-columns: 80px minmax(0, 1fr);
+      gap: 12px;
+    }
+
+    dt {
+      color: $color-muted;
+    }
+  }
+}
+
+// 流れる「contact」の文字
+.marquee {
+  overflow: hidden;
+  padding-block: 28px 20px;
+  border-bottom: 2px solid $color-ink;
+
+  &__track {
+    display: flex;
+    width: max-content;
+    animation: marquee 24s linear infinite;
+
+    span {
+      @include en(800);
+      padding-right: 0.3em;
+      font-size: clamp(64px, 9vw, 132px);
+      line-height: 1;
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+    }
+  }
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
