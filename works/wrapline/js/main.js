@@ -90,6 +90,31 @@ document.addEventListener('DOMContentLoaded', () => {
     done.hidden = false;
   });
 
+  // ===== 追従CTA（スマホ） =====
+  // ヘッダーのCTAが画面外（スクロールで隠れている）間だけ表示し、
+  // Contactセクション（実際のフォーム）に着いたら隠して二重表示を避ける。
+  const floatCta = document.getElementById('float-cta');
+  const heroEl = document.querySelector('.hero');
+  const contactEl = document.getElementById('contact');
+
+  if (floatCta && heroEl && contactEl && 'IntersectionObserver' in window) {
+    let heroVisible = true;
+    let contactVisible = false;
+    const updateFloatCta = () => {
+      floatCta.classList.toggle('is-visible', !heroVisible && !contactVisible);
+    };
+
+    new IntersectionObserver(([entry]) => {
+      heroVisible = entry.isIntersecting;
+      updateFloatCta();
+    }).observe(heroEl);
+
+    new IntersectionObserver(([entry]) => {
+      contactVisible = entry.isIntersecting;
+      updateFloatCta();
+    }).observe(contactEl);
+  }
+
   // ===== 動き（慣性スクロール・パララックス・スクロールで現れる演出） =====
   // <head>のインラインスクリプトが prefers-reduced-motion でないときだけ
   // 先に .js-anim を付けている。付いていなければここでは何もしない

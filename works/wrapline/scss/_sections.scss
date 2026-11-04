@@ -473,8 +473,8 @@
 
   &__price {
     @include en-wide(700);
-    font-size: clamp(30px, 3.6vw, 40px);
-    line-height: 1.2;
+    font-size: clamp(36px, 5.2vw, 56px);
+    line-height: 1.1;
     white-space: nowrap;
 
     span {
@@ -496,6 +496,11 @@
     .plan__name p {
       color: $color-muted-on-dark;
     }
+
+    // 人気プランは価格そのものを主役にする
+    .plan__price {
+      color: $color-accent;
+    }
   }
 }
 
@@ -505,51 +510,68 @@
   color: $color-muted;
 }
 
-// ===== Flow =====
+// ===== Flow（ゴールに向かって一本道でつながるジャーニー表現） =====
 .flow-list {
+  counter-reset: flow;
   display: grid;
   gap: 0;
-  border-left: 1px solid $color-ink;
+  border-left: 2px solid transparent;
+  border-image: linear-gradient(to bottom, $color-line, $color-accent) 1;
 
   @include mq($bp-md) {
     grid-template-columns: repeat(5, minmax(0, 1fr));
     border-left: 0;
-    border-top: 1px solid $color-ink;
+    border-top: 2px solid transparent;
+    border-image: linear-gradient(to right, $color-line, $color-accent) 1;
   }
 }
 
 .flow {
+  counter-increment: flow;
   position: relative;
   display: flex;
   flex-direction: column;
   gap: 6px;
-  padding: 0 0 32px 28px;
+  padding: 0 0 32px 32px;
 
-  // 線の上の四角い点
+  // 線の上の通過点（現在地）を表す番号付きの丸
   &::before {
-    content: "";
+    content: counter(flow);
     position: absolute;
-    top: 6px;
-    left: -6px;
-    width: 11px;
-    height: 11px;
-    background: $color-ink;
+    top: -3px;
+    left: -12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: $color-ground;
+    border: 2px solid $color-ink;
+    color: $color-ink;
+    font-family: $font-en;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 1;
   }
 
   &:last-child {
     padding-bottom: 0;
 
+    // ゴール地点だけ塗りつぶしてひと目でわかるように
     &::before {
       background: $color-accent;
+      border-color: $color-accent;
+      color: $color-ink;
     }
   }
 
   @include mq($bp-md) {
-    padding: 32px 24px 0 0;
+    padding: 36px 24px 0 0;
 
     &::before {
-      top: -6px;
-      left: 0;
+      top: -13px;
+      left: -2px;
     }
   }
 

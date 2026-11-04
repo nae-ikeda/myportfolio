@@ -193,3 +193,30 @@
   border-radius: 50%;
   background: $color-accent;
 }
+
+// 文中の要点だけをオレンジで強調する
+.hl {
+  color: $color-accent;
+  font-weight: 700;
+}
+
+// ===== 追従CTA（スマホのみ・ヘッダーのCTAが隠れている間だけ表示） =====
+.float-cta {
+  position: fixed;
+  inset: auto 0 0 0;
+  z-index: 90;
+  padding: 12px $gutter calc(12px + env(safe-area-inset-bottom, 0px));
+  background: rgba($color-ground, 0.94);
+  backdrop-filter: blur(8px);
+  border-top: 1px solid $color-line;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+
+  &.is-visible {
+    transform: translateY(0);
+  }
+
+  @include mq($bp-md) {
+    display: none; // PCはヘッダーのCTAが常に見えているので不要
+  }
+}
