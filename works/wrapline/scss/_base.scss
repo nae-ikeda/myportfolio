@@ -8,13 +8,20 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: $header-height + 8px;
+  scroll-padding-top: $header-height;
   -webkit-text-size-adjust: 100%;
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
   }
 }
 
@@ -26,6 +33,7 @@ body {
   color: $color-ink;
   background: $color-ground;
   -webkit-font-smoothing: antialiased;
+  font-feature-settings: "palt";
 }
 
 h1,
@@ -69,7 +77,6 @@ textarea {
   outline-offset: 3px;
 }
 
-// メニューを開いているときは背面をスクロールさせない
 body.is-menu-open {
   overflow: hidden;
 }

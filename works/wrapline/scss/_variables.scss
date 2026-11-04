@@ -3,35 +3,29 @@
 // ==============================
 
 // Colors
-$color-ink: #11161c;
-$color-ink-deep: #0a0d11;
-$color-ground: #f5f4f0;
+$color-ink: #0e0e0e;
+$color-ground: #f2f1ec;
+$color-gray: #e6e5df;
 $color-white: #ffffff;
-$color-muted: #4a535c;
-$color-muted-on-dark: #d5dae0;
-$color-subtle-on-dark: #aeb6bf;
-$color-line: #dedcd5;
-$color-line-dark: #3a4450;
-$color-input-line: #c9c6bd;
-$color-accent: #f2b705;
+$color-muted: #5a5a55;
+$color-line: #cfcec6;
+$color-line-dark: #2e2e2c;
+$color-on-dark: #f2f1ec;
+$color-muted-on-dark: #a8a8a2;
+$color-accent: #ff5a1f; // 黒文字と組み合わせて使う
 $color-error: #b42318;
 
 // Fonts
-$font-base: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
-$font-en: "Barlow Condensed", $font-base;
+$font-base: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+$font-en: "Archivo", $font-base;
 
 // Layout
-$container-width: 1160px;
-$container-narrow: 860px;
+$container-width: 1240px;
 $gutter: 24px;
-$header-height: 72px;
+$gutter-pc: 40px;
+$header-height: 68px;
 
 // Breakpoints
 $bp-sm: 600px;
 $bp-md: 900px;
-
-// Radius
-$radius-sm: 8px;
-$radius-md: 12px;
-$radius-lg: 16px;
-$radius-pill: 999px;
+$bp-lg: 1200px;

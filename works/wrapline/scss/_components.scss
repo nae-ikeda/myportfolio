@@ -1,65 +1,108 @@
-@use "sass:color";
 @use "variables" as *;
 @use "mixins" as *;
 
 // ===== Container =====
 .container {
   width: 100%;
-  max-width: $container-width + $gutter * 2;
+  max-width: $container-width + $gutter-pc * 2;
   margin-inline: auto;
   padding-inline: $gutter;
 
-  &--narrow {
-    max-width: $container-narrow + $gutter * 2;
+  @include mq($bp-md) {
+    padding-inline: $gutter-pc;
   }
 }
 
 // ===== Section =====
 .section {
-  padding-block: 72px;
+  padding-block: 80px;
+  border-top: 1px solid $color-line;
 
   @include mq($bp-md) {
-    padding-block: 96px;
+    padding-block: 120px;
   }
 
-  &--white {
-    background: $color-white;
+  &--dark {
+    border-top: 0;
+    background: $color-ink;
+    color: $color-on-dark;
+  }
+
+  &--gray {
+    background: $color-gray;
   }
 }
 
-.section-head {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-bottom: 40px;
-  text-align: center;
+// 見出し左・本文右の2カラム
+.split {
+  display: grid;
+  gap: 40px;
 
   @include mq($bp-md) {
-    margin-bottom: 48px;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: 64px;
   }
 
-  &__en {
-    @include en-label(16px);
-    color: $color-muted;
+  &__head {
+    margin-bottom: 0;
 
-    &--accent {
-      color: $color-accent;
+    @include mq($bp-md) {
+      position: sticky;
+      top: $header-height + 32px;
+      align-self: start;
+    }
+  }
+}
+
+// ===== Section heading =====
+.sec-head {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 48px;
+
+  @include mq($bp-md) {
+    margin-bottom: 64px;
+  }
+
+  &--row {
+    @include mq($bp-md) {
+      flex-direction: row;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 64px;
+    }
+  }
+
+  &__num {
+    @include en-label;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    &::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      background: $color-accent;
     }
   }
 
   &__title {
-    font-size: 26px;
+    font-size: clamp(28px, 4.4vw, 48px);
     font-weight: 900;
-    line-height: 1.45;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
     word-break: auto-phrase; // 日本語を文節で改行（対応ブラウザのみ）
-
-    @include mq($bp-md) {
-      font-size: 36px;
-    }
   }
 
   &__lead {
+    max-width: 460px;
     color: $color-muted;
+
+    .section--dark & {
+      color: $color-muted-on-dark;
+    }
   }
 }
 
@@ -67,21 +110,27 @@
 .btn {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 8px;
-  min-height: 44px;
-  padding: 10px 20px;
-  border: 2px solid transparent;
-  border-radius: $radius-pill;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: 56px;
+  padding: 14px 22px;
+  border: 1.5px solid transparent;
+  border-radius: 2px;
   font-weight: 700;
+  font-size: 16px;
   line-height: 1.4;
   text-decoration: none;
-  text-align: center;
   cursor: pointer;
-  transition: transform 0.2s, background-color 0.2s, color 0.2s;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
 
-  &:hover {
-    transform: translateY(-2px);
+  &__arrow {
+    font-family: $font-en;
+    font-weight: 600;
+    transition: transform 0.2s;
+  }
+
+  &:hover &__arrow {
+    transform: translateX(4px);
   }
 
   &--accent {
@@ -89,29 +138,36 @@
     color: $color-ink;
 
     &:hover {
-      background: color.adjust($color-accent, $lightness: 8%);
+      background: $color-ink;
+      color: $color-white;
     }
   }
 
-  &--outline {
-    border-color: $color-white;
+  &--dark {
+    background: $color-ink;
     color: $color-white;
 
     &:hover {
-      background: $color-white;
+      background: $color-accent;
       color: $color-ink;
     }
   }
 
-  &--sm {
-    font-size: 14px;
-    padding: 8px 18px;
+  &--line {
+    border-color: $color-ink;
+    color: $color-ink;
+
+    &:hover {
+      background: $color-ink;
+      color: $color-white;
+    }
   }
 
-  &--lg {
-    min-height: 56px;
-    padding: 14px 30px;
-    font-size: 17px;
+  &--sm {
+    min-height: 44px;
+    padding: 10px 16px;
+    font-size: 14px;
+    gap: 16px;
   }
 
   &--block {
@@ -119,35 +175,21 @@
   }
 }
 
-// ===== Card =====
-.card {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding: 28px;
-  border-radius: $radius-lg;
-  background: $color-white;
+.tag {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 1px 8px;
+  background: $color-accent;
+  color: $color-ink;
+  font-size: 12px;
+  font-weight: 700;
+  vertical-align: middle;
+}
 
-  @include mq($bp-md) {
-    padding: 32px;
-  }
-
-  &__icon {
-    color: $color-ink;
-  }
-
-  &__title {
-    font-size: 19px;
-    font-weight: 700;
-    line-height: 1.5;
-
-    @include mq($bp-md) {
-      font-size: 20px;
-    }
-  }
-
-  &__text {
-    font-size: 15px;
-    color: $color-muted;
-  }
+.dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: $color-accent;
 }

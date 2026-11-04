@@ -89,4 +89,50 @@ document.addEventListener('DOMContentLoaded', () => {
     // デモサイトのため実際には送信しない
     done.hidden = false;
   });
+
+  // ===== 動き（慣性スクロール・パララックス・スクロールで現れる演出） =====
+  // <head>のインラインスクリプトが prefers-reduced-motion でないときだけ
+  // 先に .js-anim を付けている。付いていなければここでは何もしない
+  // （JS無効時と同じく、要素は最初から表示されたまま）。
+  if (!document.documentElement.classList.contains('js-anim')) return;
+
+  // Lenis: ホイール/トラックパッドの慣性スクロールだけ滑らかにする
+  // （タッチはネイティブのスクロール感を優先、アンカー移動は既存のCSSに任せる）
+  if (window.Lenis) {
+    const lenis = new Lenis({
+      duration: 1.1,
+      smoothWheel: true,
+      syncTouch: false,
+      anchors: false,
+    });
+
+    const raf = (time) => {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    };
+    requestAnimationFrame(raf);
+  }
+
+  // Rellax: ヒーローのイラストとContactの背景文字だけに控えめなパララックス
+  if (window.Rellax) {
+    window.addEventListener('load', () => new Rellax('.rellax'));
+  }
+
+  // スクロールで読み進めた要素をふわっと表示（一度現れたら元に戻さない）
+  const revealTargets = document.querySelectorAll('[data-reveal]');
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-revealed');
+          observer.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }
+    );
+    revealTargets.forEach((el) => observer.observe(el));
+  } else {
+    revealTargets.forEach((el) => el.classList.add('is-revealed'));
+  }
 });
