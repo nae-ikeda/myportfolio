@@ -54,4 +54,25 @@ document.addEventListener('DOMContentLoaded', () => {
   );
 
   targets.forEach((el) => observer.observe(el));
+
+  // メニューで一気にジャンプしたときなど、画面に入らないまま通り過ぎた要素が
+  // 非表示のまま残らないよう、スクロールのたびに「もう上に来ている要素」を表示する
+  let ticking = false;
+  const revealPassed = () => {
+    ticking = false;
+    targets.forEach((el) => {
+      if (el.classList.contains('is-revealed')) return;
+      if (el.getBoundingClientRect().top < window.innerHeight) {
+        el.classList.add('is-revealed');
+        observer.unobserve(el);
+      }
+    });
+  };
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(revealPassed);
+    }
+  }, { passive: true });
 });
