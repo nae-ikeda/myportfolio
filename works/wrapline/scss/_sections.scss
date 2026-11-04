@@ -85,6 +85,13 @@
     pointer-events: none;
   }
 
+  // van本体だけを囲むクリッピング枠。
+  // パララックスでvan（.visual__van）がどれだけ動いても、
+  // この枠の外（＝下の.visual__specsの上）にはみ出さないようにする。
+  &__frame {
+    overflow: hidden;
+  }
+
   &__van {
     position: relative;
     width: 100%;
@@ -661,11 +668,16 @@
 
   &__big {
     @include en-wide(900);
+    overflow: hidden; // 中のパララックス文字が1行分の外にはみ出さないように
     font-size: clamp(40px, calc((100vw - 48px) / 6.9), 180px); // 画面幅に収まる大きさ
     line-height: 0.95;
     letter-spacing: -0.04em;
     color: $color-accent;
     white-space: nowrap;
+  }
+
+  &__big-track {
+    display: block;
   }
 
   &__inner {

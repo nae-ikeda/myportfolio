@@ -501,6 +501,9 @@ body.is-menu-open {
   background: repeating-linear-gradient(-60deg, transparent 0 22px, rgba(14, 14, 14, 0.07) 22px 23px);
   pointer-events: none;
 }
+.visual__frame {
+  overflow: hidden;
+}
 .visual__van {
   position: relative;
   width: 100%;
@@ -1048,11 +1051,15 @@ body.is-menu-open {
   font-weight: 900;
   font-stretch: 125%;
   letter-spacing: -0.01em;
+  overflow: hidden;
   font-size: clamp(40px, (100vw - 48px) / 6.9, 180px);
   line-height: 0.95;
   letter-spacing: -0.04em;
   color: #ff5a1f;
   white-space: nowrap;
+}
+.contact__big-track {
+  display: block;
 }
 .contact__inner {
   display: grid;
